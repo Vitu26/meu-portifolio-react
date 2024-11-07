@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import emailjs from 'emailjs-com';
-import { Box, TextField, Button, Typography, Link } from '@mui/material';
+import { Box, TextField, Button, Typography, Link, IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 
-const ContactForm = () => {
+const ContactForm = ({ onClose }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -19,7 +20,7 @@ const ContactForm = () => {
     e.preventDefault();
 
     if (!name || !email || !phone || !message) {
-      setConfirmationMessage({ text: "Por favor, preencha todos os campos.", type: 'error' });
+      setConfirmationMessage({ text: 'Por favor, preencha todos os campos.', type: 'error' });
       return;
     }
 
@@ -53,7 +54,30 @@ const ContactForm = () => {
   };
 
   return (
-    <Box id="contact" sx={{ maxWidth: 600, mx: 'auto', p: 4, bgcolor: '#f9f9f9', borderRadius: 2, boxShadow: 3 }}>
+    <Box
+      id="contact"
+      sx={{
+        maxWidth: 600,
+        mx: 'auto',
+        p: 4,
+        bgcolor: '#f9f9f9',
+        borderRadius: 2,
+        boxShadow: 3,
+        position: 'relative', // Para posicionar o botão de fechar
+      }}
+    >
+      {/* Botão para fechar */}
+      <IconButton
+        onClick={onClose}
+        sx={{
+          position: 'absolute',
+          top: 8,
+          right: 8,
+        }}
+      >
+        <CloseIcon />
+      </IconButton>
+
       <Typography variant="h4" align="center" gutterBottom>
         Contato
       </Typography>
@@ -114,7 +138,7 @@ const ContactForm = () => {
           sx={{
             mt: 2,
             color: confirmationMessage.type === 'success' ? 'green' : 'red', // Cor verde para sucesso, vermelho para erro
-            fontWeight: 'bold'
+            fontWeight: 'bold',
           }}
         >
           {confirmationMessage.text}

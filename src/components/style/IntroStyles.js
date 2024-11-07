@@ -8,13 +8,17 @@ export const IntroContainer = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   width: '100%',
-  height: '100vh', // Altura total da viewport
+  height: 'calc(100vh - 64px)', // Ajuste com o header fixo
   backgroundColor: 'black',
   color: 'white',
   textAlign: 'center',
   gap: theme.spacing(2),
   padding: theme.spacing(2),
-  overflowX: 'hidden',
+  paddingTop: '64px',
+  [theme.breakpoints.down('sm')]: {
+    paddingTop: '72px', // Ajuste maior para telas menores
+    height: 'calc(100vh - 72px)', // Considera a altura do header menor
+  },
 }));
 
 export const BackgroundContainer = styled(Box)({
@@ -37,10 +41,6 @@ export const ButtonContainer = styled(Box)(({ theme }) => ({
     flexDirection: 'row',
     justifyContent: 'center',
   },
-  '& button': {
-    color: 'white',
-    borderColor: 'white',
-  },
 }));
 
 export const ModalContainer = styled(Box)(({ theme }) => ({
@@ -60,12 +60,4 @@ export const DescriptionContainer = styled(Box)(({ theme }) => ({
     marginLeft: 0,
     textAlign: 'center',
   },
-}));
-
-export const VerticalDivider = styled(Box)(({ theme }) => ({
-  width: '2px',
-  height: 'auto',
-  backgroundColor: 'white',
-  color: 'white',
-  margin: theme.spacing(0, 3),
 }));
