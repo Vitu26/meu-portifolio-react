@@ -39,8 +39,8 @@ ou
 
 3. Configure as variáveis de ambiente. Crie um arquivo .env na raiz do projeto e adicione as seguintes variáveis:
 
-
-
+    O github me proibe de passar o token dele pelo projeto então para receber as variáreis acesse esse dococumente e copie e cole na raiz do projeto criando um arquivo ".env"
+    https://docs.google.com/document/d/1W53oIwiq56vmlbBlwTKrD6HvfqFyz9_rGMrFB3xQ7-8/edit?usp=sharing
 
 
 4. Lista de dependências
